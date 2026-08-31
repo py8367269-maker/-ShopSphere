@@ -1,0 +1,102 @@
+/* ================= ORDERS PAGE ================= */
+
+.orders-page {
+  padding: 60px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.orders-page h2 {
+  font-size: 28px;
+  color: #2d1a10;
+  margin-bottom: 30px;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.order-card {
+  background: #fffaf3;
+  border: 1px solid #eee0cf;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eee0cf;
+}
+
+.order-id {
+  font-weight: bold;
+  color: #2d1a10;
+  font-size: 15px;
+}
+
+.order-date {
+  font-size: 12px;
+  color: #8a7361;
+  margin-top: 2px;
+}
+
+.order-status {
+  background: #4b2e1f;
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+.order-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.order-item-name {
+  color: #2d1a10;
+  flex: 1;
+}
+
+.order-item-qty {
+  color: #8a7361;
+  margin: 0 16px;
+}
+
+.order-item-price {
+  color: #4b2e1f;
+  font-weight: 600;
+}
+
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px solid #eee0cf;
+  font-weight: bold;
+  color: #2d1a10;
+}
+
+.order-total-price {
+  font-size: 18px;
+  color: #4b2e1f;
+}

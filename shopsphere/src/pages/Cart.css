@@ -1,0 +1,160 @@
+/* ================= CART PAGE ================= */
+
+.cart-page {
+  padding: 60px;
+  min-height: 50vh;
+}
+
+.cart-page h2 {
+  font-size: 30px;
+  color: #2d1a10;
+  margin-bottom: 30px;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 100px 1fr auto auto auto;
+  align-items: center;
+  gap: 20px;
+  background: #fffaf3;
+  border: 1px solid #eee0cf;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.cart-item-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.cart-item-info h3 {
+  font-size: 16px;
+  color: #2d1a10;
+  margin-bottom: 4px;
+}
+
+.cart-item-variant {
+  font-size: 13px;
+  color: #8a7361;
+}
+
+.cart-item-price {
+  font-size: 14px;
+  color: #4b2e1f;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-item-quantity button {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #eee0cf;
+  background: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.cart-item-subtotal {
+  font-weight: bold;
+  color: #2d1a10;
+  min-width: 70px;
+  text-align: right;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: #9a6b4f;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  color: #c0392b;
+}
+
+.cart-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 2px solid #eee0cf;
+  font-size: 18px;
+  font-weight: bold;
+  color: #2d1a10;
+}
+
+.cart-total-price {
+  font-size: 24px;
+  color: #4b2e1f;
+}
+
+.checkout-btn {
+  margin-top: 24px;
+  width: 100%;
+}
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .cart-page {
+    padding: 40px 24px;
+  }
+
+  .cart-item {
+    position: relative;
+    grid-template-columns: 70px 1fr;
+    grid-template-areas:
+      "image info"
+      "image quantity"
+      "image subtotal";
+    gap: 8px 16px;
+    padding-right: 40px;
+  }
+
+  .cart-item-image {
+    grid-area: image;
+    width: 70px;
+    height: 70px;
+  }
+
+  .cart-item-info {
+    grid-area: info;
+  }
+
+  .cart-item-quantity {
+    grid-area: quantity;
+  }
+
+  .cart-item-subtotal {
+    grid-area: subtotal;
+    text-align: left;
+  }
+
+  .remove-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+  }
+
+  .cart-summary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}

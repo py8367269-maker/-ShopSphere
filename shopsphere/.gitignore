@@ -1,0 +1,5 @@
+node_modules/
+.env
+shopsphere-backend/node_modules/
+shopsphere-backend/.env
+shopsphere/node_modules/

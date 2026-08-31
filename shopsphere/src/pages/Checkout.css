@@ -1,0 +1,138 @@
+/* ================= CHECKOUT PAGE ================= */
+
+.checkout-page {
+  padding: 60px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.checkout-page h2 {
+  font-size: 28px;
+  color: #2d1a10;
+  margin-bottom: 30px;
+}
+
+.checkout-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.checkout-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #fffaf3;
+  border: 1px solid #eee0cf;
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.checkout-item img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.checkout-item-info {
+  flex: 1;
+}
+
+.checkout-item-name {
+  font-weight: 600;
+  color: #2d1a10;
+  margin-bottom: 4px;
+}
+
+.checkout-item-variant {
+  font-size: 12px;
+  color: #8a7361;
+}
+
+.checkout-item-qty {
+  font-size: 12px;
+  color: #6b5140;
+  margin-top: 4px;
+}
+
+.checkout-item-price {
+  font-weight: bold;
+  color: #4b2e1f;
+}
+
+.checkout-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 2px solid #eee0cf;
+  font-size: 18px;
+  font-weight: bold;
+  color: #2d1a10;
+  margin-bottom: 20px;
+}
+
+.checkout-total-price {
+  font-size: 24px;
+  color: #4b2e1f;
+}
+
+.checkout-place-btn {
+  width: 100%;
+}
+
+.checkout-place-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ================= ORDER SUCCESS ================= */
+
+.order-success {
+  text-align: center;
+  padding: 100px 20px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.order-success-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #4b2e1f;
+  color: #fff;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+}
+
+.order-success h2 {
+  font-size: 26px;
+  color: #2d1a10;
+  margin-bottom: 12px;
+}
+
+.order-success-text {
+  color: #6b5140;
+  margin-bottom: 30px;
+}
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .checkout-page {
+    padding: 40px 24px;
+  }
+
+  .checkout-item {
+    flex-wrap: wrap;
+  }
+
+  .checkout-item img {
+    width: 60px;
+    height: 60px;
+  }
+}
