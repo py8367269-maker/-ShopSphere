@@ -7,10 +7,12 @@ import Shop from "./pages/Shop";
 import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Signup from "./pages/SignUp";
 import Checkout from "./pages/Checkout";
 import OrderSuccess from "./pages/OrderSuccess";
 import Orders from "./pages/Orders";
+import Wishlist from "./pages/Wishlist";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/order-success" element={<OrderSuccess />} />
         <Route path="/orders" element={<Orders />} />
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
 
       <Footer />

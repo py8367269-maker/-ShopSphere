@@ -1,0 +1,132 @@
+.admin-page {
+  padding: 60px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.admin-page h2 {
+  font-size: 28px;
+  color: #2d1a10;
+  margin-bottom: 30px;
+}
+
+.admin-form {
+  background: #fffaf3;
+  border: 1px solid #eee0cf;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 40px;
+}
+
+.admin-form h3 {
+  font-size: 16px;
+  color: #2d1a10;
+  margin-bottom: 16px;
+}
+
+.admin-error {
+  color: #c0392b;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.admin-form input,
+.admin-form textarea {
+  padding: 10px 14px;
+  border: 1px solid #eee0cf;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  width: 100%;
+  outline: none;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus {
+  border-color: #c98a4b;
+}
+
+.admin-form textarea {
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+.admin-form-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.admin-form-actions .primary-btn {
+  width: auto;
+  padding: 10px 24px;
+}
+
+.admin-list-heading {
+  font-size: 18px;
+  color: #2d1a10;
+  margin-bottom: 16px;
+}
+
+.admin-product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-product-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #fffaf3;
+  border: 1px solid #eee0cf;
+  border-radius: 12px;
+  padding: 10px 16px;
+}
+
+.admin-product-row img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.admin-product-info {
+  flex: 1;
+}
+
+.admin-product-name {
+  font-weight: 600;
+  color: #2d1a10;
+  font-size: 14px;
+}
+
+.admin-product-meta {
+  font-size: 12px;
+  color: #8a7361;
+}
+
+.admin-product-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.admin-product-actions button {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid #eee0cf;
+  background: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.admin-product-actions .delete-btn {
+  border-color: #c0392b;
+  color: #c0392b;
+}

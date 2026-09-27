@@ -8,6 +8,8 @@ function Shop() {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [maxPrice, setMaxPrice] = useState(null);
+  const [priceBounds, setPriceBounds] = useState({ min: 0, max: 0 });
 
   useEffect(() => {
     fetch("http://localhost:5000/api/products")
@@ -18,6 +20,14 @@ function Shop() {
       .then((data) => {
         setProducts(data);
         setLoading(false);
+
+        if (data.length > 0) {
+          const prices = data.map((p) => p.price);
+          const min = Math.min(...prices);
+          const max = Math.max(...prices);
+          setPriceBounds({ min, max });
+          setMaxPrice(max);
+        }
       })
       .catch((err) => {
         setError(err.message);
@@ -36,7 +46,8 @@ function Shop() {
       .includes(searchTerm.toLowerCase());
     const matchesCategory =
       selectedCategory === "All" || product.category === selectedCategory;
-    return matchesSearch && matchesCategory;
+    const matchesPrice = maxPrice === null || product.price <= maxPrice;
+    return matchesSearch && matchesCategory && matchesPrice;
   });
 
   return (
@@ -68,6 +79,27 @@ function Shop() {
             </button>
           ))}
         </div>
+
+        {priceBounds.max > 0 && (
+          <div className="price-filter">
+            <label htmlFor="price-range">
+              Max Price: ₹{maxPrice}
+            </label>
+            <input
+              id="price-range"
+              type="range"
+              min={priceBounds.min}
+              max={priceBounds.max}
+              value={maxPrice ?? priceBounds.max}
+              onChange={(e) => setMaxPrice(Number(e.target.value))}
+              className="price-slider"
+            />
+            <div className="price-range-labels">
+              <span>₹{priceBounds.min}</span>
+              <span>₹{priceBounds.max}</span>
+            </div>
+          </div>
+        )}
       </div>
 
       {filteredProducts.length === 0 ? (

@@ -3,18 +3,24 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import "./Orders.css";
 
+const STATUS_STEPS = ["placed", "shipped", "delivered"];
+
 function Orders() {
   const { user, token } = useAuth();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [cancellingId, setCancellingId] = useState(null);
 
   useEffect(() => {
     if (!token) {
       setLoading(false);
       return;
     }
+    fetchOrders();
+  }, [token]);
 
+  const fetchOrders = () => {
     fetch("http://localhost:5000/api/orders", {
       headers: { Authorization: `Bearer ${token}` },
     })
@@ -30,7 +36,26 @@ function Orders() {
         setError(err.message);
         setLoading(false);
       });
-  }, [token]);
+  };
+
+  const handleCancel = async (orderId) => {
+    setCancellingId(orderId);
+    try {
+      const res = await fetch(
+        `http://localhost:5000/api/orders/${orderId}/cancel`,
+        {
+          method: "PATCH",
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      if (!res.ok) throw new Error("Failed to cancel order");
+      fetchOrders();
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      setCancellingId(null);
+    }
+  };
 
   if (!user) {
     return (
@@ -76,8 +101,27 @@ function Orders() {
                   })}
                 </p>
               </div>
-              <div className="order-status">{order.status}</div>
+              <div className={`order-status status-${order.status}`}>
+                {order.status}
+              </div>
             </div>
+
+            {STATUS_STEPS.includes(order.status) && (
+              <div className="status-tracker">
+                {STATUS_STEPS.map((step, i) => {
+                  const currentIndex = STATUS_STEPS.indexOf(order.status);
+                  const isDone = i <= currentIndex;
+                  return (
+                    <div key={step} className="status-step">
+                      <div
+                        className={`status-dot ${isDone ? "done" : ""}`}
+                      />
+                      <p className={isDone ? "done" : ""}>{step}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
 
             <div className="order-items">
               {order.items.map((item) => (
@@ -99,6 +143,16 @@ function Orders() {
               <p>Total</p>
               <p className="order-total-price">₹{order.total_price}</p>
             </div>
+
+            {order.status === "placed" && (
+              <button
+                className="cancel-order-btn"
+                onClick={() => handleCancel(order.id)}
+                disabled={cancellingId === order.id}
+              >
+                {cancellingId === order.id ? "Cancelling..." : "Cancel Order"}
+              </button>
+            )}
           </div>
         ))}
       </div>

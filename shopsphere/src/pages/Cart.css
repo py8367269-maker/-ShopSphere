@@ -106,9 +106,12 @@
 }
 
 .checkout-btn {
-  margin-top: 24px;
+  display: block;
   width: 100%;
+  margin-top: 24px;
+  text-align: center;
 }
+
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 768px) {
@@ -157,4 +160,13 @@
     align-items: flex-start;
     gap: 6px;
   }
+}
+.cart-page p {
+  color: #6b5847;
+  margin-bottom: 24px;
+}
+
+.cart-page .primary-btn {
+  display: inline-block;
+  margin-top: 8px;
 }

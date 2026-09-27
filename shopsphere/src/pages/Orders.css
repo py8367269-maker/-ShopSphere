@@ -100,3 +100,76 @@
   font-size: 18px;
   color: #4b2e1f;
 }
+.status-placed {
+  background: #c98a4b;
+}
+
+.status-shipped {
+  background: #4a7fbf;
+}
+
+.status-delivered {
+  background: #3f9142;
+}
+
+.status-cancelled {
+  background: #c0392b;
+}
+
+.status-tracker {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 0 4px;
+}
+
+.status-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.status-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #eee0cf;
+}
+
+.status-dot.done {
+  background: #4b2e1f;
+}
+
+.status-step p {
+  font-size: 11px;
+  text-transform: capitalize;
+  color: #8a7361;
+}
+
+.status-step p.done {
+  color: #2d1a10;
+  font-weight: 600;
+}
+
+.cancel-order-btn {
+  margin-top: 16px;
+  width: 100%;
+  background: none;
+  border: 1px solid #c0392b;
+  color: #c0392b;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.cancel-order-btn:hover {
+  background: #fdf1f0;
+}
+
+.cancel-order-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

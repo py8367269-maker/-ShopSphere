@@ -5,8 +5,8 @@ const pool = require("../config/db");
 
 const router = express.Router();
 
-function signToken(userId) {
-  return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: "7d" });
+function signToken(userId, role) {
+  return jwt.sign({ userId, role }, process.env.JWT_SECRET, { expiresIn: "7d" });
 }
 
 // POST /api/auth/signup  { name, email, password } -> { user, token }
@@ -28,11 +28,11 @@ router.post("/signup", async (req, res) => {
 
     const passwordHash = await bcrypt.hash(password, 10);
     const { rows } = await pool.query(
-      "INSERT INTO users (name, email, password_hash) VALUES ($1, $2, $3) RETURNING id, name, email",
+      "INSERT INTO users (name, email, password_hash) VALUES ($1, $2, $3) RETURNING id, name, email, role",
       [name, email, passwordHash]
     );
     const user = rows[0];
-    const token = signToken(user.id);
+    const token = signToken(user.id, user.role);
 
     res.status(201).json({ user, token });
   } catch (err) {
@@ -51,7 +51,7 @@ router.post("/login", async (req, res) => {
 
   try {
     const { rows } = await pool.query(
-      "SELECT id, name, email, password_hash FROM users WHERE email = $1",
+      "SELECT id, name, email, password_hash, role FROM users WHERE email = $1",
       [email]
     );
     const userRow = rows[0];
@@ -64,8 +64,8 @@ router.post("/login", async (req, res) => {
       return res.status(401).json({ error: "Invalid email or password" });
     }
 
-    const user = { id: userRow.id, name: userRow.name, email: userRow.email };
-    const token = signToken(user.id);
+    const user = { id: userRow.id, name: userRow.name, email: userRow.email, role: userRow.role };
+    const token = signToken(user.id, user.role);
 
     res.json({ user, token });
   } catch (err) {

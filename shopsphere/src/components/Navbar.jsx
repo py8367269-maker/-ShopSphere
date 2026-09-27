@@ -1,10 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
+import { useWishlist } from "../context/WishlistContext";
 
 function Navbar() {
   const { totalItems } = useCart();
   const { user, logout } = useAuth();
+  const { wishlist } = useWishlist();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -27,8 +29,16 @@ function Navbar() {
       <div className="nav-actions">
         {user ? (
           <>
+          {user.role === "admin" && (
+  <Link to="/admin" className="login-link">
+    Admin
+  </Link>
+)}
             <Link to="/orders" className="login-link">
               My Orders
+            </Link>
+            <Link to="/wishlist" className="login-link">
+              ♥ Wishlist {wishlist.length > 0 && `(${wishlist.length})`}
             </Link>
             <span className="nav-username">Hi, {user.name}</span>
             <button className="logout-btn" onClick={handleLogout}>
